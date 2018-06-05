@@ -1,0 +1,26 @@
+<div class="title-block">
+  <h3 class="title">
+    Страница записей <span class="sparkline bar"></span>
+  </h3>
+</div>
+<section class="section text-center" *ngIf="!isLoaded">
+  <sdh-loader></sdh-loader>
+</section>
+<section class="section" *ngIf="isLoaded">
+  <div class="row">
+    <div class="col-md-6">
+      <sdh-add-event [categories]="categories"></sdh-add-event>
+    </div>
+    <div class="col-md-6">
+      <sdh-add-category (onCategoryAdd)="newCategoryAdded($event)"></sdh-add-category>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <sdh-edit-category
+        [categories]="categories"
+        (onCategoryEdit)="categoryWasEdited($event)"
+      ></sdh-edit-category>
+    </div>
+  </div>
+</section>

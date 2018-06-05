@@ -1,0 +1,28 @@
+<div class="title-block">
+  <h3 class="title pull-left">
+    Страница истории <span class="sparkline bar"></span>
+  </h3>
+  <div class="pull-right">
+    <button class="btn-sm btn btn-primary-outline" (click)="openFilter()">
+      <i class="fa fa-filter"></i>
+    </button>
+  </div>
+</div>
+<div *ngIf="!isLoaded" class="text-center"><sdh-loader></sdh-loader></div>
+<div *ngIf="isLoaded">
+  <sdh-history-chart [data]="chartData"></sdh-history-chart>
+  <sdh-history-events
+    [categories]="categories"
+    [events]="filteredEvents"
+  ></sdh-history-events>
+  <div *ngIf="isFilterVisible">
+    <sdh-history-filter
+      (onFilterApply)="onFilterApply($event)"
+      (onFilterCancel)="onFilterCancel()"
+      [categories]="categories"
+    ></sdh-history-filter>
+  </div>
+</div>
+
+
+
